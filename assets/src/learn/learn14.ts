@@ -38,8 +38,11 @@ export default class Learn14 extends LearnBase {
     protected update (dt: number): void {
         if (this._autoPlay) {
             if (this.slider.progress < 1) {
-                this.slider.progress = cc.clamp01(this.slider.progress + dt / 2);
-                this.triangle.progress = this.slider.progress
+                this.slider.progress = this.slider.progress + dt / 2;
+                if (this.slider.progress > 1) {
+                    this.slider.progress = 1;
+                }
+                this.triangle.progress = this.slider.progress;
             } else {
                 this._autoPlay = false;
             }

@@ -10,5 +10,18 @@ let _tempVec2 = new cc.Vec2;
 
 @ccclass
 export default class Learn18 extends LearnBase {
+    @property(cc.Node)
+    pointF: cc.Node
+
+    @property(TriangleComponent)
+    triangle: TriangleComponent;
+
+    updateDraw (drawHelper: DrawHelper): void {
+        if (this.pointF.x > this.triangle.C.x) {
+            this.pointF.active = false;
+        } else {
+            this.pointF.active = true;
+        }
+    }
 
 }

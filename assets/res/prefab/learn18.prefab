@@ -7244,6 +7244,12 @@
     "enableTouch": false,
     "moveSelf": false,
     "learnTitle": "",
+    "pointF": {
+      "__id__": 72
+    },
+    "triangle": {
+      "__id__": 92
+    },
     "_id": ""
   },
   {
