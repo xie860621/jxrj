@@ -192,7 +192,6 @@ export default class TriangleComponent extends TouchPanel {
     updateDraw (drawHelper: DrawHelper): void {
         this.updateAngle();
 
-
         this._mids.forEach((mid, index) => {
             mid.normalizeSelf();
             this.nodes[index].getChildByName("label").setPosition(mid.x * -10, mid.y * -10);
@@ -226,7 +225,6 @@ export default class TriangleComponent extends TouchPanel {
         if (!this.nodes || this.nodes.length == 0) {
             this.nodes = this.node.children.concat([]);
         }
-
 
         this._vertexs.length = 0;
         this.nodes.forEach((node) => {

@@ -15,16 +15,20 @@ const { ccclass, property } = cc._decorator;
 export default class FunctionComponent extends TouchPanel {
     @property(String)
     funStr: string = "";
+    @property(String)
+    nFunStr: string = "";
     @property
-    minX: number = -4;
+    minX: number = -6;
     @property
-    maxX: number = 4;
+    maxX: number = 6;
     @property
-    minY: number = -4;
+    minY: number = -6;
     @property
-    maxY: number = 4;
+    maxY: number = 6;
     @property
     space: number = 0.1;
+    @property(Boolean)
+    showDotted: boolean = true;
 
     _maxPointX: number = 0;
     _maxPointY: number = 0;
@@ -65,7 +69,10 @@ export default class FunctionComponent extends TouchPanel {
             this._functionVertexs.push({ x: x * GlobalValue.scale + pos.x, y: y * GlobalValue.scale + pos.y })
         }
 
-        this._functionDotted.push({ x: this._maxPointX * GlobalValue.scale + pos.x, y: this.minY * GlobalValue.scale + pos.y }, { x: this._maxPointX * GlobalValue.scale + pos.x, y: this.maxY * GlobalValue.scale + pos.y })
+        if (this.showDotted) {
+            this._functionDotted.push({ x: this._maxPointX * GlobalValue.scale + pos.x, y: this.minY * GlobalValue.scale + pos.y }, { x: this._maxPointX * GlobalValue.scale + pos.x, y: this.maxY * GlobalValue.scale + pos.y })
+
+        }
     }
 
     updateDraw (drawHelper: DrawHelper): void {
@@ -82,15 +89,19 @@ export default class FunctionComponent extends TouchPanel {
         } catch (error) {
             return 0;
         }
+        // Math.sqrt(4 - y) + 1
+    }
 
-        // 2 + y1 = -(1 + y1)*(1 + y1)+2(y1) + 3
-        // 2 + y1 = 2 - y1 * y1  
-        // y1 = y1* y1
-        // y1 = 1
-
-        // 2x + x*x
-        // x = 2
-        // 3 = -x*x + 2x + 3
-
+    doNFunction (y: number) {
+        if (!this.nFunStr || this.nFunStr == "") {
+            return;
+        }
+        let x = 0;
+        try {
+            eval(this.nFunStr)
+            return x;
+        } catch (error) {
+            return 0;
+        }
     }
 }

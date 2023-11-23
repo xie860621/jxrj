@@ -55,10 +55,16 @@ export default class LearnBase extends TouchPanel {
 
     // onLoad () {}
 
+    protected start (): void {
+        this.init();
 
-    updateDraw (drawHelper: DrawHelper) {
+        this.sendUpdateDraw();
+    }
+
+    init () {
 
     }
+
 
     getInfo () {
         let comps = this.getComponentsInChildren(EditLabelComponent);

@@ -16,9 +16,6 @@ export default class Learn14 extends LearnBase {
     slider: cc.Slider;
 
     _autoPlay: boolean = false;
-    start (): void {
-
-    }
 
     onSlice (slider: cc.Slider) {
         this.triangle.progress = slider.progress;

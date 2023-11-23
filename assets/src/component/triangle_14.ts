@@ -43,25 +43,18 @@ export default class Triangle14 extends TriangleComponent {
 
     protected onEnable (): void {
         super.onEnable();
-        this.pointD.on(cc.Node.EventType.TOUCH_MOVE, this.onTouchMoveD, this);
+        this.pointD.on(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        this.pointE.on(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        this.pointF.on(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
     }
 
     onDisable () {
         super.onDisable();
-        this.pointD.off(cc.Node.EventType.TOUCH_MOVE, this.onTouchMoveD, this);
+        this.pointD.off(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        this.pointE.off(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
+        this.pointF.off(cc.Node.EventType.TOUCH_MOVE, this.onTouchMove, this);
     }
 
-    onTouchMoveD (event: cc.Event.EventTouch): void {
-        //  this.node.parent.convertToNodeSpaceAR(event.touch.getLocation(), _tempVec2)
-
-        this.getCrossPoint(_tempVec2, this.APosition, event.touch.getLocation(), this.BPosition, this.CPosition)
-
-        _tempVec2.x = cc.misc.clampf(_tempVec2.x, this.BPosition.x, this.CPosition.x);
-        _tempVec2.y = cc.misc.clampf(_tempVec2.y, this.BPosition.y, this.CPosition.y);
-
-        this.pointD.setPosition(this.node.convertToNodeSpaceAR(_tempVec2));
-        this.sendUpdateDraw()
-    }
 
 
     updatePoint (target) {
@@ -101,9 +94,9 @@ export default class Triangle14 extends TriangleComponent {
         } else if (event.target == this.pointD) {
             let delta = event.touch.getDelta();
             //   event.target.position = this.node.convertToNodeSpaceAR(event.touch.getLocation())
-            cc.Vec2.add(_tempVec2, this.APosition, delta)
+            cc.Vec2.scaleAndAdd(_tempVec2, this.APosition, delta, 0.5)
             this.A.setPosition(this.node.convertToNodeSpaceAR(_tempVec2));
-            cc.Vec2.add(_tempVec2, this.BPosition, delta)
+            cc.Vec2.scaleAndAdd(_tempVec2, this.BPosition, delta, 0.5)
             this.B.setPosition(this.node.convertToNodeSpaceAR(_tempVec2));
             this.updatePoint(this.pointD);
             this.updatePoint(this.pointE);
@@ -117,9 +110,9 @@ export default class Triangle14 extends TriangleComponent {
         } else if (event.target == this.pointE) {
             let delta = event.touch.getDelta();
             //   event.target.position = this.node.convertToNodeSpaceAR(event.touch.getLocation())
-            cc.Vec2.add(_tempVec2, this.APosition, delta)
+            cc.Vec2.scaleAndAdd(_tempVec2, this.APosition, delta, 0.5)
             this.A.setPosition(this.node.convertToNodeSpaceAR(_tempVec2));
-            cc.Vec2.add(_tempVec2, this.CPosition, delta)
+            cc.Vec2.scaleAndAdd(_tempVec2, this.CPosition, delta, 0.5)
             this.C.setPosition(this.node.convertToNodeSpaceAR(_tempVec2));
             this.updatePoint(this.pointD);
             this.updatePoint(this.pointE);
@@ -131,9 +124,9 @@ export default class Triangle14 extends TriangleComponent {
             //    this.pointE.setPosition(this.node.convertToNodeSpaceAR(_tempVec2));
         } else if (event.target == this.pointF) {
             let delta = event.touch.getDelta();
-            cc.Vec2.add(_tempVec2, this.BPosition, delta)
+            cc.Vec2.scaleAndAdd(_tempVec2, this.BPosition, delta, 0.5)
             this.B.setPosition(this.node.convertToNodeSpaceAR(_tempVec2));
-            cc.Vec2.add(_tempVec2, this.CPosition, delta)
+            cc.Vec2.scaleAndAdd(_tempVec2, this.CPosition, delta, 0.5)
             this.C.setPosition(this.node.convertToNodeSpaceAR(_tempVec2));
             this.updatePoint(this.pointD);
             this.updatePoint(this.pointE);
@@ -154,7 +147,6 @@ export default class Triangle14 extends TriangleComponent {
     }
 
     updateDraw (drawHelper: DrawHelper) {
-
 
         let lists = [];
         lists.push([this.A, this.pointD, this.pointG, this.pointE]);

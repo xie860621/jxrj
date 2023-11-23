@@ -27,7 +27,7 @@ export default class Learn15 extends LearnBase {
 
     _isCheck: boolean = false;
 
-    start (): void {
+    init () {
         var clickEventHandler = new cc.Component.EventHandler();
         clickEventHandler.target = this.node; // 这个 node 节点是你的事件处理代码组件所属的节点
         clickEventHandler.component = this.node.name;// 这个是代码文件名

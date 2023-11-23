@@ -33,6 +33,9 @@ export default class AxleComponent extends TouchPanel {
     @property(Boolean)
     showLine: boolean = true;
 
+    @property(Number)
+    fontSize: number = 14
+
     _numberXLabels: Map<number, cc.Node> = new Map;
     _numberYLabels: Map<number, cc.Node> = new Map;
     _lastSize: cc.Vec4 = new cc.Vec4;
@@ -81,7 +84,7 @@ export default class AxleComponent extends TouchPanel {
     //     this.updateDraw();
     // }
     updateDraw (drawHelper: DrawHelper) {
-        drawHelper.drawXYAxle(this.node.convertToWorldSpaceAR(cc.Vec2.ZERO), this.left.position.x, this.right.position.x, this.down.position.y, this.up.position.y);
+        drawHelper.drawXYAxle(this.node.convertToWorldSpaceAR(cc.Vec2.ZERO), this.left.position.x, this.right.position.x, this.down.position.y, this.up.position.y, this.showLine);
 
         if (this._drawTime) {
             clearTimeout(this._drawTime);
@@ -93,6 +96,9 @@ export default class AxleComponent extends TouchPanel {
     }
 
     updateNumberLabel () {
+        if (!this.showNumber) {
+            return
+        }
         if (!this._labelNode) {
             this._labelNode = this.zero.children[0];
         }
@@ -121,6 +127,7 @@ export default class AxleComponent extends TouchPanel {
                 labelNode.setPosition(i * scale, -12);
                 this._numberXLabels.set(i, labelNode);
 
+                labelNode.getComponent(cc.Label).fontSize = this.fontSize;
                 labelNode.getComponent(cc.Label).string = "" + i;
             }
         }
@@ -144,6 +151,8 @@ export default class AxleComponent extends TouchPanel {
                 labelNode.setPosition(i * scale, -12);
                 this._numberXLabels.set(i, labelNode);
 
+
+                labelNode.getComponent(cc.Label).fontSize = this.fontSize;
                 labelNode.getComponent(cc.Label).string = "" + i;
             }
         }
@@ -167,6 +176,8 @@ export default class AxleComponent extends TouchPanel {
                 labelNode.setPosition(20, i * scale);
                 this._numberYLabels.set(i, labelNode);
 
+
+                labelNode.getComponent(cc.Label).fontSize = this.fontSize;
                 labelNode.getComponent(cc.Label).string = "" + i;
             }
         }
@@ -190,6 +201,8 @@ export default class AxleComponent extends TouchPanel {
                 labelNode.setPosition(20, i * scale);
                 this._numberYLabels.set(i, labelNode);
 
+
+                labelNode.getComponent(cc.Label).fontSize = this.fontSize;
                 labelNode.getComponent(cc.Label).string = "" + i;
             }
         }

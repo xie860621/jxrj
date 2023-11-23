@@ -58,7 +58,7 @@ export default class TouchPanel extends cc.Component {
     }
 
     onTouchMove (event: cc.Event.EventTouch) {
-        if (this._inAnimation) {
+        if (this._inAnimation || !this.enableTouch) {
             return;
         }
         if (event.target != this.node) {

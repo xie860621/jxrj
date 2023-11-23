@@ -1542,6 +1542,7 @@
       "a": 255
     },
     "isDotted": false,
+    "setAngleInfo": true,
     "angleA": 80,
     "lenAB": 12,
     "lenAC": 12,
@@ -3005,6 +3006,7 @@
       "a": 255
     },
     "isDotted": false,
+    "setAngleInfo": true,
     "angleA": 80,
     "lenAB": 12,
     "lenAC": 12,
@@ -4468,6 +4470,7 @@
       "a": 255
     },
     "isDotted": true,
+    "setAngleInfo": true,
     "angleA": 80,
     "lenAB": 12,
     "lenAC": 12,
@@ -9589,6 +9592,9 @@
       "__id__": 1
     },
     "_enabled": true,
+    "nodes": [],
+    "enableTouch": false,
+    "moveSelf": false,
     "learnTitle": "",
     "triangle": {
       "__id__": 41

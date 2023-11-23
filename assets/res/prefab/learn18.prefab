@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "learn181",
+    "_name": "learn18",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -61,8 +61,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        174.014,
-        5.899,
+        0,
+        0,
         0,
         0,
         0,
@@ -135,7 +135,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -624.14,
+        -441.646,
         272.41,
         0,
         0,
@@ -588,7 +588,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -7.117,
+        175.377,
         -36.276,
         0,
         0,
@@ -3435,7 +3435,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -521.733,
+        -339.239,
         -11.888,
         0,
         0,
@@ -5833,7 +5833,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -325.947,
+        -143.453,
         -11.888,
         0,
         0,
@@ -7240,6 +7240,9 @@
       "__id__": 1
     },
     "_enabled": true,
+    "nodes": [],
+    "enableTouch": false,
+    "moveSelf": false,
     "learnTitle": "",
     "_id": ""
   },

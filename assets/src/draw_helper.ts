@@ -16,7 +16,8 @@ let AngleGreenLine = new cc.Color;
 cc.Color.fromHEX(AngleGreenLine, "3dff37");
 let BLUE = new cc.Color
 cc.Color.fromHEX(BLUE, "23519a")
-
+let Green = new cc.Color;
+cc.Color.fromHEX(Green, "9fff9e");
 @ccclass
 export default class DrawHelper extends cc.Component {
 
@@ -171,6 +172,7 @@ export default class DrawHelper extends cc.Component {
 
     drawXYAxle (position: cc.Vec2, minX, maxX, minY, maxY, drawNumber = true) {
         this._graphice.lineWidth = 3;
+        this._graphice.strokeColor = cc.Color.BLACK;
         this.drawLine(new cc.Vec2(minX + position.x, position.y), new cc.Vec2(maxX + position.x, position.y), true);
         this.drawLine(new cc.Vec2(position.x, position.y + minY), new cc.Vec2(position.x, position.y + maxY), true);
         this._graphice.stroke();
@@ -226,19 +228,36 @@ export default class DrawHelper extends cc.Component {
     }
 
     // todo
-    drawRightAngle (center: cc.Vec2, angle: number, radius: number = 1) {
+    drawRightAngle (center: cc.Vec2, dic: cc.Vec2, radius: number = 1) {
         const ctx = this._graphice;
         if (!ctx) {
             return;
         }
-        ctx.lineWidth = 2;
+        ctx.lineWidth = 3;
         ctx.strokeColor = cc.Color.BLACK;
-        //  this.drawLine({ x: center.x, y: center.y + radius }, { x: center.x + radius, y: center.y + radius });
-        //   this.drawLine({ x: center.x + radius, y: center.y }, { x: center.x + radius, y: center.y + radius });
+
+        cc.Vec2.multiplyScalar(_tempVec2, dic, radius * this.scale);
+
+        let vertexs = [];
+        dic.rotate(Math.PI / 2, _tempVec2_2);
+        cc.Vec2.multiplyScalar(_tempVec2_2, _tempVec2_2, radius * this.scale);
+
+        cc.Vec2.add(_tempVec2_3, _tempVec2, _tempVec2_2);
+
+        vertexs.push(_tempVec2);
+        vertexs.push(_tempVec2_3);
+        vertexs.push(_tempVec2_2);
+
+        vertexs.forEach((point) => {
+            cc.Vec2.add(point, point, center);
+        })
+
+        this.drawLine(vertexs[0], vertexs[1], true);
+        this.drawLine(vertexs[1], vertexs[2], true);
         ctx.stroke();
     }
 
-    drawAngle (center: cc.Vec2, dic1: cc.Vec2, dic2: cc.Vec2, radius: number = 1, time = 1, fillColor = cc.Color.GREEN) {
+    drawAngle (center: cc.Vec2, dic1: cc.Vec2, dic2: cc.Vec2, radius: number = 1, time = 1, fillColor = Green) {
         const ctx = this._graphice;
         if (!ctx) {
             return;
