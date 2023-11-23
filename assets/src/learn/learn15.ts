@@ -11,6 +11,7 @@ let _tempVec2 = new cc.Vec2;
 let _tempVec2_1 = new cc.Vec2;
 let _tempVec2_2 = new cc.Vec2;
 let _tempVec3 = new cc.Vec3
+let _tempVec3_2 = new cc.Vec3
 @ccclass
 export default class Learn15 extends LearnBase {
     @property(TriangleComponent)
@@ -54,7 +55,10 @@ export default class Learn15 extends LearnBase {
             cc.Vec3.subtract(_tempVec3, this.triangle.A.position, this.triangleCheck.A.position);
             cc.Vec3.add(_tempVec3, _tempVec3, this.triangle.node.position)
 
-            cc.tween(this.triangleDotted.node).to(3, { position: _tempVec3 }).call(() => {
+            cc.Vec3.subtract(_tempVec3_2, this.triangleDotted.node.position, _tempVec3)
+            let time = _tempVec3_2.len();
+
+            cc.tween(this.triangleDotted.node).to(time / 200, { position: _tempVec3 }).call(() => {
                 this._isCheck = false;
             }).start();
         } else {
