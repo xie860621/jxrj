@@ -5,19 +5,27 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
+import { GlobalValue } from "./global";
+
 const { ccclass, property } = cc._decorator;
 
 let _tempVec2 = new cc.Vec2;
 let _tempVec2_2 = new cc.Vec2;
 let _tempVec2_3 = new cc.Vec2
-let LineWidth = 10;
-let DottedWidth = 10;
+let _tempVec2_4 = new cc.Vec2
+let LineWidth = 20;
+let DottedWidth = 20;
 let AngleGreenLine = new cc.Color;
 cc.Color.fromHEX(AngleGreenLine, "3dff37");
 let BLUE = new cc.Color
 cc.Color.fromHEX(BLUE, "23519a")
 let Green = new cc.Color;
 cc.Color.fromHEX(Green, "9fff9e");
+let FunBule = new cc.Color
+cc.Color.fromHEX(FunBule, "b6d2ff");
+let DotteColor = new cc.Color
+cc.Color.fromHEX(DotteColor, "b0babe");
+
 @ccclass
 export default class DrawHelper extends cc.Component {
 
@@ -25,7 +33,7 @@ export default class DrawHelper extends cc.Component {
 
     // onLoad () {}
 
-    scale: number = 20;
+    scale: number = GlobalValue.scale;
 
     _graphice: cc.Graphics;
 
@@ -41,7 +49,11 @@ export default class DrawHelper extends cc.Component {
     }
 
     drawVertexs (vertexs: cc.Vec2[], isDotted: boolean = false, loop: boolean = true, strokeColor = null, fillColor = null) {
-        this._graphice.lineWidth = 4;
+        if (vertexs.length < 2) {
+            return;
+        }
+
+        this._graphice.lineWidth = 5;
         if (strokeColor) {
             this._graphice.strokeColor = strokeColor;
         } else {
@@ -165,38 +177,38 @@ export default class DrawHelper extends cc.Component {
             let point = new cc.Vec2(x * this.scale + position.x, y * this.scale + position.y);
             vertexs.push(point);
         }
-        this.drawVertexs(vertexs, false, false);
-        this.drawVertexs([new cc.Vec2(maxPointX * this.scale + position.x, minY * this.scale + position.y), new cc.Vec2(maxPointX * this.scale + position.x, maxY * this.scale + position.y)], true, false);
+        this.drawVertexs(vertexs, false, false, FunBule);
+        this.drawVertexs([new cc.Vec2(maxPointX * this.scale + position.x, minY * this.scale + position.y), new cc.Vec2(maxPointX * this.scale + position.x, maxY * this.scale + position.y)], true, false, DotteColor);
         return { maxPointX, maxPointY }
     }
 
-    drawXYAxle (position: cc.Vec2, minX, maxX, minY, maxY, drawNumber = true) {
-        this._graphice.lineWidth = 3;
-        this._graphice.strokeColor = cc.Color.BLACK;
+    drawAxle (position: cc.Vec2, minX, maxX, minY, maxY, drawNumber = true) {
+        this._graphice.lineWidth = 4;
+        this._graphice.strokeColor = FunBule;
         this.drawLine(new cc.Vec2(minX + position.x, position.y), new cc.Vec2(maxX + position.x, position.y), true);
         this.drawLine(new cc.Vec2(position.x, position.y + minY), new cc.Vec2(position.x, position.y + maxY), true);
         this._graphice.stroke();
 
         if (drawNumber) {
             this._graphice.lineWidth = 2;
-            let h1 = 0.5;
-            let h2 = 0.25;
+            let h1 = 12 / this.scale;
+            let h2 = 6 / this.scale;
             // 各种小刻度
             for (let index = 0; index < maxX; index += this.scale) {
                 this.drawLine(new cc.Vec2(index + position.x, position.y), new cc.Vec2(index + position.x, position.y + this.scale * h1), true);
-                this.drawLine(new cc.Vec2((index + this.scale * h1) + position.x, position.y), new cc.Vec2((index + this.scale * h1) + position.x, position.y + this.scale * h2), true);
+                this.drawLine(new cc.Vec2((index + this.scale * 0.5) + position.x, position.y), new cc.Vec2((index + this.scale * 0.5) + position.x, position.y + this.scale * h2), true);
             }
             for (let index = 0; index > minX; index -= this.scale) {
                 this.drawLine(new cc.Vec2(index + position.x, position.y), new cc.Vec2(index + position.x, position.y + this.scale * h1), true);
-                this.drawLine(new cc.Vec2((index + this.scale * h1) + position.x, position.y), new cc.Vec2((index + this.scale * h1) + position.x, position.y + this.scale * h2), true);
+                this.drawLine(new cc.Vec2((index + this.scale * 0.5) + position.x, position.y), new cc.Vec2((index + this.scale * 0.5) + position.x, position.y + this.scale * h2), true);
             }
             for (let index = 0; index < maxY; index += this.scale) {
                 this.drawLine(new cc.Vec2(position.x, index + position.y), new cc.Vec2(position.x + this.scale * h1, index + position.y), true);
-                this.drawLine(new cc.Vec2(position.x, (index + this.scale * h1) + position.y), new cc.Vec2(position.x + this.scale * h2, (index + this.scale * h1) + position.y), true);
+                this.drawLine(new cc.Vec2(position.x, (index + this.scale * 0.5) + position.y), new cc.Vec2(position.x + this.scale * h2, (index + this.scale * 0.5) + position.y), true);
             }
             for (let index = 0; index > minY; index -= this.scale) {
                 this.drawLine(new cc.Vec2(position.x, index + position.y), new cc.Vec2(position.x + this.scale * h1, index + position.y), true);
-                this.drawLine(new cc.Vec2(position.x, (index + this.scale * h1) + position.y), new cc.Vec2(position.x + this.scale * h2, (index + this.scale * h1) + position.y), true);
+                this.drawLine(new cc.Vec2(position.x, (index + this.scale * 0.5) + position.y), new cc.Vec2(position.x + this.scale * h2, (index + this.scale * 0.5) + position.y), true);
             }
 
             this._graphice.stroke();
@@ -234,7 +246,7 @@ export default class DrawHelper extends cc.Component {
             return;
         }
         ctx.lineWidth = 3;
-        ctx.strokeColor = cc.Color.BLACK;
+        ctx.strokeColor = AngleGreenLine;
 
         cc.Vec2.multiplyScalar(_tempVec2, dic, radius * this.scale);
 
@@ -244,17 +256,36 @@ export default class DrawHelper extends cc.Component {
 
         cc.Vec2.add(_tempVec2_3, _tempVec2, _tempVec2_2);
 
+        _tempVec2_4.x = 0;
+        _tempVec2_4.y = 0;
+
         vertexs.push(_tempVec2);
         vertexs.push(_tempVec2_3);
         vertexs.push(_tempVec2_2);
+        vertexs.push(_tempVec2_4);
 
         vertexs.forEach((point) => {
             cc.Vec2.add(point, point, center);
-        })
+        });
 
+        this.fillVertexs(vertexs, Green);
         this.drawLine(vertexs[0], vertexs[1], true);
         this.drawLine(vertexs[1], vertexs[2], true);
         ctx.stroke();
+    }
+
+    fillVertexs (vertexs: cc.Vec2[], fillColor) {
+        const ctx = this._graphice;
+        if (!ctx) {
+            return;
+        }
+        ctx.moveTo(vertexs[0].x, vertexs[0].y);
+        for (let i = 0; i < vertexs.length - 1; i++) {
+            this.drawLine(vertexs[i], vertexs[i + 1])
+        }
+        ctx.close();
+        ctx.fillColor = fillColor;
+        ctx.fill();
     }
 
     drawAngle (center: cc.Vec2, dic1: cc.Vec2, dic2: cc.Vec2, radius: number = 1, time = 1, fillColor = Green) {

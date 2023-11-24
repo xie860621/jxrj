@@ -11,6 +11,13 @@ import { GlobalValue } from "../global";
 
 const { ccclass, property } = cc._decorator;
 
+
+let FunBule = new cc.Color
+cc.Color.fromHEX(FunBule, "b6d2ff");
+let DotteColor = new cc.Color
+cc.Color.fromHEX(DotteColor, "b0babe");
+
+
 @ccclass
 export default class FunctionComponent extends TouchPanel {
     @property(String)
@@ -77,8 +84,8 @@ export default class FunctionComponent extends TouchPanel {
 
     updateDraw (drawHelper: DrawHelper): void {
         this.evalFunction();
-        drawHelper.drawVertexs(this._functionVertexs, false, false);
-        drawHelper.drawVertexs(this._functionDotted, true, false);
+        drawHelper.drawVertexs(this._functionVertexs, false, false, FunBule);
+        drawHelper.drawVertexs(this._functionDotted, true, false, DotteColor);
     }
 
     doFunction (x: number) {

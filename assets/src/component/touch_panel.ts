@@ -79,7 +79,7 @@ export default class TouchPanel extends cc.Component {
         // zeroPosition.x += this.node.width / 2;
         // zeroPosition.y += this.node.height / 2;
 
-        // //   drawHelper.drawXYAxle(zeroPosition);
+        // //   drawHelper.drawAxle(zeroPosition);
 
         // // let vertexs: cc.Vec2[] = []
         // // this.nodes.forEach((node) => {

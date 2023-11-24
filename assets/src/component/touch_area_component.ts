@@ -96,6 +96,9 @@ export default class TouchAreaComponent extends cc.Component {
             this.drawHelper.clear();
             let touchPanels = this.getComponentsInChildren(TouchPanel);
             touchPanels.forEach((panelJs) => {
+                if (panelJs instanceof LearnBase) {
+                    return;
+                }
                 if (panelJs.enabled && panelJs.node.active) {
                     panelJs.updateDraw(this.drawHelper);
                 }

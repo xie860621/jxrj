@@ -11,6 +11,7 @@ const { ccclass, property } = cc._decorator;
 
 let _tempVec2 = new cc.Vec2;
 
+
 @ccclass
 export default class Learn16 extends LearnBase {
     @property(AxleComponent)
@@ -40,10 +41,10 @@ export default class Learn16 extends LearnBase {
         let pPosition = this.getNodeWorldPosition(this.pointP)
         let vertexs = [this.triangle.BPosition, pPosition, this.triangle.CPosition];
 
-        drawHelper.drawVertexs(vertexs);
-
         cc.Vec2.subtract(_tempVec2, this.triangle.BPosition, pPosition);
         drawHelper.drawRightAngle(pPosition, _tempVec2.normalizeSelf(), 0.5);
+
+        drawHelper.drawVertexs(vertexs);
 
         vertexs = [this.triangle.APosition, this.getNodeWorldPosition(this.pointQ)];
         drawHelper.drawVertexs(vertexs);
@@ -55,13 +56,13 @@ export default class Learn16 extends LearnBase {
         position.x -= this.triangle.node.x;
         position.y -= this.triangle.node.y;
         if (position.y > 4 * GlobalValue.scale) {
-            return;
-        } else if (position.y < this.axle.down.position.y) {
-            return;
+            position.y = 4 * GlobalValue.scale
+        } else if (position.y < -500) {
+            position.y = -500
         }
 
         let dic = 1;
-        if (position.x < 20) {
+        if (position.x < 1 * GlobalValue.scale) {
             dic = -1
         }
         let y = position.y / GlobalValue.scale;
@@ -73,7 +74,7 @@ export default class Learn16 extends LearnBase {
 
     onTouchMove (event: cc.Event.EventTouch): void {
         if (event.target == this.pointQ) {
-            let position = this.node.convertToNodeSpaceAR(event.touch.getLocation())
+            let position = this.pointQ.parent.convertToNodeSpaceAR(event.touch.getLocation())
             this.updateQPoint(position);
             this.sendUpdateDraw();
         }

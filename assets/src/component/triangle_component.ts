@@ -194,7 +194,7 @@ export default class TriangleComponent extends TouchPanel {
 
         this._mids.forEach((mid, index) => {
             mid.normalizeSelf();
-            this.nodes[index].getChildByName("label").setPosition(mid.x * -10, mid.y * -10);
+            this.nodes[index].getChildByName("label").setPosition(mid.x * -20, mid.y * -20);
         });
         if (this.showAngle) {
             // negate 会改变自身，所以这里需要驻意下
@@ -204,7 +204,7 @@ export default class TriangleComponent extends TouchPanel {
 
             this._mids.forEach((mid, index) => {
                 let angleNode = this.nodes[index].getChildByName("angle");
-                angleNode.setPosition(mid.x * 40, mid.y * 40);
+                angleNode.setPosition(mid.x * 80, mid.y * 80);
                 angleNode.getComponent(cc.Label).string = Number(this._angles[index]).toFixed(2);
             });
         }

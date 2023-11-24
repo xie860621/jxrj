@@ -1,3 +1,3 @@
 export const GlobalValue = {
-    scale: 20
+    scale: 40
 }

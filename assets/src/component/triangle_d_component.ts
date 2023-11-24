@@ -6,7 +6,8 @@ import DrawHelper from "../draw_helper";
 const { ccclass, property } = cc._decorator;
 
 let _tempVec2 = new cc.Vec2;
-
+let _tempVec3 = new cc.Vec3;
+let _tempVec3_2 = new cc.Vec3;
 @ccclass
 export default class TriangleD extends TriangleComponent {
     @property(Number)
@@ -22,13 +23,19 @@ export default class TriangleD extends TriangleComponent {
     AD: cc.Vec2 = new cc.Vec2
     AE: cc.Vec2 = new cc.Vec2;
 
+    _BDR: number = 0.5;
+
     init () {
         super.init();
-        cc.Vec2.add(_tempVec2, this.BPosition, this.CPosition);
-        _tempVec2.multiplyScalar(0.5);
-        this.pointD.setPosition(this.node.convertToNodeSpaceAR(_tempVec2));
+        this.updateDPoint();
         this.updateOther();
         this.sendUpdateDraw()
+    }
+
+    updateDPoint () {
+        cc.Vec2.subtract(_tempVec2, this.CPosition, this.BPosition);
+        cc.Vec2.scaleAndAdd(_tempVec2, this.BPosition, _tempVec2, this._BDR);
+        this.pointD.setPosition(this.node.convertToNodeSpaceAR(_tempVec2));
     }
 
     protected onEnable (): void {
@@ -51,6 +58,11 @@ export default class TriangleD extends TriangleComponent {
 
         this.pointD.setPosition(this.node.convertToNodeSpaceAR(_tempVec2));
 
+        cc.Vec3.subtract(_tempVec3, this.B.position, this.pointD.position);
+        cc.Vec3.subtract(_tempVec3_2, this.B.position, this.C.position)
+
+        this._BDR = _tempVec3.len() / _tempVec3_2.len();
+
         this.updateOther();
         this.sendUpdateDraw()
     }
@@ -68,6 +80,16 @@ export default class TriangleD extends TriangleComponent {
 
         this.getCrossPoint(_tempVec2, this.APosition, this.getNodeWorldPosition(this.pointE), this.BPosition, this.CPosition);
         this.pointF.setPosition(this.node.convertToNodeSpaceAR(_tempVec2));
+    }
+
+    onTouchMove (event: cc.Event.EventTouch): void {
+        super.onTouchMove(event);
+
+        if (event.target == this.B || event.target == this.C) {
+            this.updateDPoint();
+        }
+
+        this.updateOther();
     }
 
     updateDraw (drawHelper: DrawHelper) {

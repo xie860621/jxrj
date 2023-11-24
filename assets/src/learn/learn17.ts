@@ -28,13 +28,16 @@ export default class Learn17 extends LearnBase {
     @property(cc.Node)
     pointP: cc.Node;
 
-    updateDraw (drawHelper: DrawHelper): void {
+    init (): void {
+        this.updatePPoint(this.pointP.position)
+    }
+
+    drawACB (drawHelper: DrawHelper) {
         let nodes = [this.pointA, this.pointC, this.pointB];
         let vertexs = [];
         nodes.forEach((node) => {
             vertexs.push(this.getNodeWorldPosition(node));
         })
-        drawHelper.drawVertexs(vertexs, false, false);
 
         let dic1 = new cc.Vec2
         let dic2 = new cc.Vec2
@@ -45,14 +48,20 @@ export default class Learn17 extends LearnBase {
         dic2.normalizeSelf();
         drawHelper.drawAngle(vertexs[1], dic1, dic2, 1);
 
+        drawHelper.drawVertexs(vertexs, false, false);
+    }
 
-        vertexs.length = 0;
-        nodes = [this.pointP, this.axle.node,];
+
+    drawPXY (drawHelper: DrawHelper) {
+        let vertexs = [];
+        let nodes = [];
+        let dic1 = new cc.Vec2
+        let dic2 = new cc.Vec2
+
+        nodes = [this.pointP, this.axle.node];
         nodes.forEach((node) => {
             vertexs.push(this.getNodeWorldPosition(node));
         })
-        drawHelper.drawVertexs(vertexs, false, false);
-
         vertexs.push(this.getNodeWorldPosition(this.pointA))
 
         cc.Vec2.subtract(dic1, vertexs[0], vertexs[1]);
@@ -60,19 +69,27 @@ export default class Learn17 extends LearnBase {
         cc.Vec2.subtract(dic2, vertexs[2], vertexs[1]);
         dic2.normalizeSelf();
         drawHelper.drawAngle(vertexs[1], dic1, dic2, 1);
+
+        vertexs.length = 2
+        drawHelper.drawVertexs(vertexs, false, false);
+    }
+
+    updateDraw (drawHelper: DrawHelper): void {
+        this.drawACB(drawHelper);
+        this.drawPXY(drawHelper);
     }
 
     updatePPoint (position) {
         position.x -= this.axle.node.x;
         position.y -= this.axle.node.y;
         if (position.y > 4 * GlobalValue.scale) {
-            return;
-        } else if (position.y < this.axle.down.position.y) {
-            return;
+            position.y = 4 * GlobalValue.scale
+        } else if (position.y < -500) {
+            position.y = -500
         }
 
         let dic = 1;
-        if (position.x < 20) {
+        if (position.x < GlobalValue.scale) {
             dic = -1
         }
         let y = position.y / GlobalValue.scale;
@@ -84,7 +101,7 @@ export default class Learn17 extends LearnBase {
 
     onTouchMove (event: cc.Event.EventTouch): void {
         if (event.target == this.pointP) {
-            let position = this.node.convertToNodeSpaceAR(event.touch.getLocation())
+            let position = this.pointP.parent.convertToNodeSpaceAR(event.touch.getLocation())
             this.updatePPoint(position);
             this.sendUpdateDraw();
         }

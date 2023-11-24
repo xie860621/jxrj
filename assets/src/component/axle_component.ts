@@ -6,6 +6,7 @@
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
 import DrawHelper from "../draw_helper";
+import { GlobalValue } from "../global";
 import TouchPanel from "./touch_panel";
 
 let _tempVec2 = new cc.Vec2;
@@ -33,8 +34,7 @@ export default class AxleComponent extends TouchPanel {
     @property(Boolean)
     showLine: boolean = true;
 
-    @property(Number)
-    fontSize: number = 14
+    fontSize: number = 30
 
     _numberXLabels: Map<number, cc.Node> = new Map;
     _numberYLabels: Map<number, cc.Node> = new Map;
@@ -84,7 +84,7 @@ export default class AxleComponent extends TouchPanel {
     //     this.updateDraw();
     // }
     updateDraw (drawHelper: DrawHelper) {
-        drawHelper.drawXYAxle(this.node.convertToWorldSpaceAR(cc.Vec2.ZERO), this.left.position.x, this.right.position.x, this.down.position.y, this.up.position.y, this.showLine);
+        drawHelper.drawAxle(this.node.convertToWorldSpaceAR(cc.Vec2.ZERO), this.left.position.x, this.right.position.x, this.down.position.y, this.up.position.y, this.showLine);
 
         if (this._drawTime) {
             clearTimeout(this._drawTime);
@@ -102,7 +102,7 @@ export default class AxleComponent extends TouchPanel {
         if (!this._labelNode) {
             this._labelNode = this.zero.children[0];
         }
-        let scale = 20;
+        let scale = GlobalValue.scale;
         let minX = Math.floor(this.left.position.x / scale);
         let maxX = Math.floor(this.right.position.x / scale);
         let minY = Math.floor(this.down.position.y / scale);
@@ -124,7 +124,7 @@ export default class AxleComponent extends TouchPanel {
                 }
                 let labelNode = cc.instantiate(this._labelNode);
                 labelNode.parent = this._labelNode.parent;
-                labelNode.setPosition(i * scale, -12);
+                labelNode.setPosition(i * scale, -20);
                 this._numberXLabels.set(i, labelNode);
 
                 labelNode.getComponent(cc.Label).fontSize = this.fontSize;
@@ -148,7 +148,7 @@ export default class AxleComponent extends TouchPanel {
                 }
                 let labelNode = cc.instantiate(this._labelNode);
                 labelNode.parent = this._labelNode.parent;
-                labelNode.setPosition(i * scale, -12);
+                labelNode.setPosition(i * scale, -20);
                 this._numberXLabels.set(i, labelNode);
 
 
@@ -173,7 +173,7 @@ export default class AxleComponent extends TouchPanel {
                 }
                 let labelNode = cc.instantiate(this._labelNode);
                 labelNode.parent = this._labelNode.parent;
-                labelNode.setPosition(20, i * scale);
+                labelNode.setPosition(24, i * scale);
                 this._numberYLabels.set(i, labelNode);
 
 
@@ -198,7 +198,7 @@ export default class AxleComponent extends TouchPanel {
                 }
                 let labelNode = cc.instantiate(this._labelNode);
                 labelNode.parent = this._labelNode.parent;
-                labelNode.setPosition(20, i * scale);
+                labelNode.setPosition(24, i * scale);
                 this._numberYLabels.set(i, labelNode);
 
 
