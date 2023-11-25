@@ -100,16 +100,16 @@ export default class TriangleComponent extends TouchPanel {
             cc.Vec2.scaleAndAdd(_tempVec2_2, this.nodes[2].position, dic2, this._lens[2] * GlobalValue.scale);
         }
 
-        this._inAnimation = true;
+        this._inAnimation = 0;
         let vecs = [_tempVec2_1, _tempVec2_2];
         for (let i = 0; i < 3; i++) {
             if (i == index) {
                 continue;
             }
-
+            this._inAnimation++;
             let p = vecs.shift();
             cc.tween(this.nodes[i]).to(2, { position: new cc.Vec3(p.x, p.y) }).call(() => {
-                this._inAnimation = false;
+                this._inAnimation--;
             }).start();
         }
 
@@ -141,9 +141,9 @@ export default class TriangleComponent extends TouchPanel {
         cc.Vec2.scaleAndAdd(_tempVec2, p1.convertToWorldSpaceAR(cc.Vec2.ZERO), p12, len * GlobalValue.scale);
         let newPosition = this.node.convertToNodeSpaceAR(_tempVec2)
         if (doAnimation) {
-            this._inAnimation = true;
+            this._inAnimation++;
             cc.tween(p2).to(1, { position: new cc.Vec3(newPosition.x, newPosition.y) }).call(() => {
-                this._inAnimation = false;
+                this._inAnimation--;
             }).start()
         } else {
             p2.setPosition(newPosition);
@@ -292,15 +292,15 @@ export default class TriangleComponent extends TouchPanel {
     }
 
     update (dt) {
-        if (this._inAnimation) {
+        if (this._inAnimation > 0) {
             this.sendUpdateDraw();
         }
     }
 
     animationPoint (index, position) {
-        this._inAnimation = true;
+        this._inAnimation++;
         cc.tween(this.nodes[index]).to(2, { position: this.node.convertToNodeSpaceAR(position) }).call(() => {
-            this._inAnimation = false;
+            this._inAnimation--;
         }).start();
     }
 

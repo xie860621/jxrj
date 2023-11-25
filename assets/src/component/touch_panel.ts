@@ -13,7 +13,7 @@ export default class TouchPanel extends cc.Component {
     @property(Boolean)
     moveSelf: boolean = true;
 
-    _inAnimation: boolean = false;
+    _inAnimation: number = 0;
 
     public get inAnimation () {
         return this._inAnimation;
@@ -58,7 +58,7 @@ export default class TouchPanel extends cc.Component {
     }
 
     onTouchMove (event: cc.Event.EventTouch) {
-        if (this._inAnimation || !this.enableTouch) {
+        if (this._inAnimation > 0 || !this.enableTouch) {
             return;
         }
         if (event.target != this.node) {

@@ -347,5 +347,15 @@ export default class DrawHelper extends cc.Component {
 
         // 如果需要绘制，则需要2,2.2,2.5 为长度来划线，且
     }
+
+    drawCircle (center: cc.Vec2, radius: number) {
+        const ctx = this._graphice;
+        if (!ctx) {
+            return;
+        }
+
+        ctx.circle(center.x, center.y, radius)
+        ctx.stroke();
+    }
     // update (dt) {}
 }
