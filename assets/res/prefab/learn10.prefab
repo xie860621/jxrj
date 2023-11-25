@@ -889,6 +889,7 @@
       "__id__": 11
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -1307,6 +1308,7 @@
       "__id__": 23
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -1725,6 +1727,7 @@
       "__id__": 35
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -2671,6 +2674,7 @@
       "__id__": 61
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -3188,6 +3192,7 @@
       "__id__": 76
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -3280,7 +3285,7 @@
     "_enabled": true,
     "nodes": [],
     "enableTouch": true,
-    "moveSelf": true,
+    "moveSelf": false,
     "learnTitle": "",
     "_id": ""
   },

@@ -5,10 +5,14 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/2.4/manual/en/scripting/life-cycle-callbacks.html
 
+import TouchAreaComponent from "./component/touch_area_component";
+
 const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class Main extends cc.Component {
+    @property(TouchAreaComponent)
+    touchArea: TouchAreaComponent;
     @property(cc.Node)
     learnPanel: cc.Node = null;
 
@@ -34,6 +38,7 @@ export default class Main extends cc.Component {
         this._currentIndex = (this._currentIndex + 1) % this.learnPrefabs.length;
 
         if (this._currentNode) {
+            this.touchArea.disableTouch();
             this._currentNode.removeFromParent();
         }
 
@@ -45,6 +50,8 @@ export default class Main extends cc.Component {
         this._currentNode = node;
 
         this.label.string = "当前：" + this._currentNode.name;
+
+        this.touchArea.enabledTouch();
     }
 
     onGoto () {

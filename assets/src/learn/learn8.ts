@@ -30,7 +30,14 @@ export default class Learn8 extends LearnBase {
     onTouchMove (event: cc.Event.EventTouch): void {
         // super.onTouchMove(event);
 
+        if (!this.enableTouch) {
+            return;
+        }
         let node = event.target as cc.Node;
+        if (this.nodes.indexOf(node) == -1) {
+            return;
+        }
+
         let position = node.parent.convertToNodeSpaceAR(event.getLocation())
         this.line.getLinePosition(position, _tempVec3);
         node.setPosition(_tempVec3);

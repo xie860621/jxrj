@@ -62,11 +62,15 @@ export default class TouchPanel extends cc.Component {
             return;
         }
         if (event.target != this.node) {
-            event.target.position = this.node.convertToNodeSpaceAR(event.touch.getLocation())
-        } else if (event.target == this.node) {
+            if (this.nodes.indexOf(event.target) != -1) {
+                event.target.position = this.node.convertToNodeSpaceAR(event.touch.getLocation())
+                this.sendUpdateDraw();
+            }
+        } else if (event.target == this.node && this.moveSelf) {
             event.target.position = this.node.parent.convertToNodeSpaceAR(event.touch.getLocation())
+            this.sendUpdateDraw();
         }
-        this.sendUpdateDraw();
+
     }
 
     onTouchEnd () {

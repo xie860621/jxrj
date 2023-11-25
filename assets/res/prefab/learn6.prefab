@@ -2211,6 +2211,7 @@
       "__id__": 46
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -2629,6 +2630,7 @@
       "__id__": 58
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -3047,6 +3049,7 @@
       "__id__": 70
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -3465,6 +3468,7 @@
       "__id__": 82
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -3501,7 +3505,7 @@
       }
     ],
     "enableTouch": true,
-    "moveSelf": true,
+    "moveSelf": false,
     "fillColor": {
       "__type__": "cc.Color",
       "r": 255,
@@ -3558,8 +3562,8 @@
     },
     "_enabled": true,
     "nodes": [],
-    "enableTouch": true,
-    "moveSelf": true,
+    "enableTouch": false,
+    "moveSelf": false,
     "learnTitle": "",
     "parallelogram": {
       "__id__": 94
