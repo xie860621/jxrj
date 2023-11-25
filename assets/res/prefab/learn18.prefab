@@ -946,6 +946,7 @@
       "__id__": 16
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -1254,6 +1255,7 @@
       "__id__": 25
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -1562,6 +1564,7 @@
       "__id__": 34
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -1870,6 +1873,7 @@
       "__id__": 43
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -2178,6 +2182,7 @@
       "__id__": 52
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -2486,6 +2491,7 @@
       "__id__": 61
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -3344,6 +3350,7 @@
       "__id__": 84
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -3652,6 +3659,7 @@
       "__id__": 93
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -3960,6 +3968,7 @@
       "__id__": 102
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -4978,6 +4987,7 @@
       "__id__": 126
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -5396,6 +5406,7 @@
       "__id__": 138
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -5814,6 +5825,7 @@
       "__id__": 150
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -6232,6 +6244,7 @@
       "__id__": 162
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -6650,6 +6663,7 @@
       "__id__": 174
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -7068,6 +7082,7 @@
       "__id__": 186
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {

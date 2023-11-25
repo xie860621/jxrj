@@ -129,7 +129,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -679.9,
+        -680,
         320,
         0,
         0,
@@ -898,6 +898,7 @@
       "__id__": 11
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -1316,6 +1317,7 @@
       "__id__": 23
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -1834,6 +1836,7 @@
       "__id__": 38
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -2351,6 +2354,7 @@
       "__id__": 53
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -2800,6 +2804,7 @@
       "__id__": 67
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -3218,6 +3223,7 @@
       "__id__": 79
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -3636,6 +3642,7 @@
       "__id__": 91
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -4054,6 +4061,7 @@
       "__id__": 103
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
@@ -4472,6 +4480,7 @@
       "__id__": 115
     },
     "_enabled": true,
+    "strType": 0,
     "_id": ""
   },
   {
