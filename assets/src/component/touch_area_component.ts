@@ -77,6 +77,14 @@ export default class TouchAreaComponent extends cc.Component {
             this.editBox.fontSize = this._currLabel.fontSize;
             this.editBox.node.color = this._currLabel.node.color;
 
+
+            let editLabel = node.getComponent(EditLabelComponent);
+            if (editLabel.strType == 1) {
+                this.editBox.inputMode = cc.EditBox.InputMode.NUMERIC;
+            } else {
+                this.editBox.inputMode = cc.EditBox.InputMode.ANY;
+            }
+
             this.editBox.setFocus();
         }
         this._lastTouchEndTime = Date.now();
@@ -85,6 +93,18 @@ export default class TouchAreaComponent extends cc.Component {
     onEditEnd (): void {
         this._currLabel.string = this.editBox.string;
         this.editBox.node.active = false;
+
+        this.updateEdit();
+    }
+
+
+    updateEdit () {
+        let touchPanels = this.getComponentsInChildren(LearnBase);
+        touchPanels.forEach((panelJs) => {
+            if (panelJs.enabled && panelJs.node.active) {
+                panelJs.updateEdit();
+            }
+        });
     }
 
     updateDraw () {

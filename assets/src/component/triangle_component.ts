@@ -194,7 +194,7 @@ export default class TriangleComponent extends TouchPanel {
 
         this._mids.forEach((mid, index) => {
             mid.normalizeSelf();
-            this.nodes[index].getChildByName("label").setPosition(mid.x * -20, mid.y * -20);
+            this.nodes[index].getChildByName("label").setPosition(mid.x * -30, mid.y * -30);
         });
         if (this.showAngle) {
             // negate 会改变自身，所以这里需要驻意下

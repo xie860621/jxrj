@@ -149,10 +149,6 @@ export default class DrawHelper extends cc.Component {
         }
     }
 
-    drawCicle (o: cc.Vec2, r: number) {
-        this._graphice.circle(o.x, o.y, r);
-    }
-
     // 一元二次方程
     drawFunction (funStr, minX, maxX, minY, maxY, space, position, isDotted = true) {
         let x = minX;
@@ -353,7 +349,8 @@ export default class DrawHelper extends cc.Component {
         if (!ctx) {
             return;
         }
-
+        ctx.lineWidth = 5;
+        ctx.strokeColor = BLUE;
         ctx.circle(center.x, center.y, radius)
         ctx.stroke();
     }

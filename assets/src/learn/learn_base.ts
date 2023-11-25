@@ -65,6 +65,10 @@ export default class LearnBase extends TouchPanel {
 
     }
 
+    updateEdit () {
+
+    }
+
 
     getInfo () {
         let comps = this.getComponentsInChildren(EditLabelComponent);

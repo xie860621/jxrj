@@ -13,9 +13,8 @@ export default class CircleComponent extends TouchPanel {
     _radius: number = 0;
 
     updateDraw (drawHelper: DrawHelper): void {
-        cc.Vec3.subtract(_tempVec3, this.pointP.position, this.node.position)
-        this._radius = _tempVec3.len();
+        this._radius = this.pointP.position.len();
 
-        drawHelper.drawCicle(this.getNodeWorldPosition(this.node), this._radius);
+        drawHelper.drawCircle(this.getNodeWorldPosition(this.node), this._radius);
     }
 }

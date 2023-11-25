@@ -9,6 +9,6 @@ const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class EditLabelComponent extends cc.Component {
-    
-
+    @property
+    strType: number = 0; // 0 无限制 1 数值
 }

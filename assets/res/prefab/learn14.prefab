@@ -552,8 +552,8 @@
         0,
         0,
         1,
-        0.5,
-        0.5,
+        1,
+        1,
         1
       ]
     },
@@ -640,8 +640,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 14.01,
-      "height": 30.24
+      "width": 26.68,
+      "height": 50.4
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -694,8 +694,8 @@
     "_dstBlendFactor": 771,
     "_string": "A",
     "_N$string": "A",
-    "_fontSize": 21,
-    "_lineHeight": 24,
+    "_fontSize": 40,
+    "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -970,8 +970,8 @@
         0,
         0,
         1,
-        0.5,
-        0.5,
+        1,
+        1,
         1
       ]
     },
@@ -1058,8 +1058,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 14.01,
-      "height": 30.24
+      "width": 26.68,
+      "height": 50.4
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1112,8 +1112,8 @@
     "_dstBlendFactor": 771,
     "_string": "B",
     "_N$string": "B",
-    "_fontSize": 21,
-    "_lineHeight": 24,
+    "_fontSize": 40,
+    "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -1388,8 +1388,8 @@
         0,
         0,
         1,
-        0.5,
-        0.5,
+        1,
+        1,
         1
       ]
     },
@@ -1476,8 +1476,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 15.17,
-      "height": 30.24
+      "width": 28.89,
+      "height": 50.4
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1530,8 +1530,8 @@
     "_dstBlendFactor": 771,
     "_string": "C",
     "_N$string": "C",
-    "_fontSize": 21,
-    "_lineHeight": 24,
+    "_fontSize": 40,
+    "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -2243,8 +2243,8 @@
     "_dstBlendFactor": 771,
     "_string": "",
     "_N$string": "",
-    "_fontSize": 21,
-    "_lineHeight": 24,
+    "_fontSize": 40,
+    "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -2551,8 +2551,8 @@
     "_dstBlendFactor": 771,
     "_string": "",
     "_N$string": "",
-    "_fontSize": 21,
-    "_lineHeight": 24,
+    "_fontSize": 40,
+    "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -2859,8 +2859,8 @@
     "_dstBlendFactor": 771,
     "_string": "",
     "_N$string": "",
-    "_fontSize": 21,
-    "_lineHeight": 24,
+    "_fontSize": 40,
+    "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -3167,8 +3167,8 @@
     "_dstBlendFactor": 771,
     "_string": "",
     "_N$string": "",
-    "_fontSize": 21,
-    "_lineHeight": 24,
+    "_fontSize": 40,
+    "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,

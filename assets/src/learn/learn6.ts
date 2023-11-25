@@ -1,9 +1,10 @@
 import Parallelogram from "../component/parallelogram_component";
+import LearnBase from "./learn_base";
 
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class Learn6 extends cc.Component {
+export default class Learn6 extends LearnBase {
     @property(Parallelogram)
     parallelogram: Parallelogram
 

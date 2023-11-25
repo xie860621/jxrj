@@ -12,6 +12,12 @@ export default class Main extends cc.Component {
     @property(cc.Node)
     learnPanel: cc.Node = null;
 
+    @property(cc.Label)
+    label: cc.Label;
+
+    @property(cc.EditBox)
+    editBox: cc.EditBox;
+
 
     @property([cc.Prefab])
     learnPrefabs: cc.Prefab[] = [];
@@ -37,5 +43,24 @@ export default class Main extends cc.Component {
         node.parent = this.learnPanel;
 
         this._currentNode = node;
+
+        this.label.string = "当前：" + this._currentNode.name;
+    }
+
+    onGoto () {
+        let num = Number(this.editBox.string);
+
+        let str = "learn" + num;
+
+        for (let i = 0; i < this.learnPrefabs.length; i++) {
+            let prefab = this.learnPrefabs[i];
+            if (prefab.name == str) {
+                this._currentIndex = i - 1;
+                this.onChange();
+                return;
+            }
+        }
+
+        // no find
     }
 }
