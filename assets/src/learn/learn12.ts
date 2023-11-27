@@ -21,19 +21,43 @@ export default class Learn12 extends LearnBase {
     @property(cc.Label)
     endLabel;
 
+    @property(cc.Slider)
+    slider1: cc.Slider;
+
+    @property(cc.Slider)
+    slider2: cc.Slider;
+
     _pool: cc.NodePool = new cc.NodePool;
 
-    startLine: number = 1;
-    endLine: number = 15;
+    startNumber: number = 1;
+    endNumber: number = 152;
+
+    MAX: number = 299;
 
     // update (dt) {}
     init () {
+        this.updateSliderEdit(this.startNumber, this.endNumber);
         this.doFunc()
     }
 
-    updateEdit () {
-        this.startLine = cc.misc.clampf(Number(this.startLabel.string), 0, 999);
-        this.endLine = cc.misc.clampf(Number(this.endLabel.string), this.startLine, 999);
+    onSlider1 () {
+        let start = 1 + this.slider1.progress * this.MAX;
+        this.updateSliderEdit(Math.floor(start), this.endNumber);
+    }
+
+    onSlider2 () {
+        let end = this.slider2.progress * this.MAX;
+        this.updateSliderEdit(this.startNumber, Math.floor(end));
+    }
+
+    updateSliderEdit (start, end) {
+        start = cc.misc.clampf(start, 1, this.MAX);
+        end = cc.misc.clampf(end, start, this.MAX);
+
+        this.startNumber = start;
+        this.endNumber = end;
+        this.startLabel.string = start;
+        this.endLabel.string = end;
         this.doFunc();
     }
 
@@ -43,7 +67,7 @@ export default class Learn12 extends LearnBase {
             this._pool.put(node);
         });
 
-        let n = this.endLine;
+        let n = 30;
         let m = 2 * n - 1;
         const arr = new Array(n).fill('').map(item => new Array(m).fill(0))
         for (let i = 0; i < n; i++) {
@@ -55,36 +79,49 @@ export default class Learn12 extends LearnBase {
                 arr[i][j] = arr[i - 1][j - 1] + arr[i - 1][j + 1];
         }
         let p;
+        let index = 0;
         for (let i = 0; i < n; i++) {
             let str = "";
             for (let j = 0; j < n - i - 1; j++)
                 str += "";
             p = 1;
             for (let j = n - i - 1; p < i + 2; j = j + 2) {
-                if (arr[i][j] < 1000) {
-                    str += " ";
-                    if (arr[i][j] < 100) {
+                index++;
+                if (index > this.endNumber) {
+                    str += "             ";
+                    p = p + 1;
+                    continue;
+                }
+                if (index >= this.startNumber) {
+                    if (arr[i][j] < 10000) {
                         str += " ";
-                        if (arr[i][j] < 10) {
+                        if (arr[i][j] < 1000) {
                             str += " ";
+                            if (arr[i][j] < 100) {
+                                str += " ";
+                                if (arr[i][j] < 10) {
+                                    str += " ";
+                                }
+                            }
                         }
                     }
+                    str += arr[i][j];
                 }
-                str += arr[i][j];
+                else {
+                    str += "     "
+                }
                 str += "    ";//    
                 p = p + 1;
             }
             //    console.log(str);
-            if (i >= this.startLine - 1) {
-                let node;
-                if (this._pool.size() > 0) {
-                    node = this._pool.get();
-                } else {
-                    node = cc.instantiate(this.label.node) as cc.Node;
-                }
-                node.parent = this.layout.node;
-                node.getComponent(cc.Label).string = str;
+            let node;
+            if (this._pool.size() > 0) {
+                node = this._pool.get();
+            } else {
+                node = cc.instantiate(this.label.node) as cc.Node;
             }
+            node.parent = this.layout.node;
+            node.getComponent(cc.Label).string = str;
         }
     }
 }
