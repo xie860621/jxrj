@@ -236,7 +236,7 @@ export default class DrawHelper extends cc.Component {
     }
 
     // todo
-    drawRightAngle (center: cc.Vec2, dic: cc.Vec2, radius: number = 1) {
+    drawRightAngle (center: cc.Vec2, dic: cc.Vec2, radius: number = 1, rightDic: number = 1) {
         const ctx = this._graphice;
         if (!ctx) {
             return;
@@ -247,7 +247,7 @@ export default class DrawHelper extends cc.Component {
         cc.Vec2.multiplyScalar(_tempVec2, dic, radius * this.scale);
 
         let vertexs = [];
-        dic.rotate(Math.PI / 2, _tempVec2_2);
+        dic.rotate(Math.PI / 2 * rightDic, _tempVec2_2);
         cc.Vec2.multiplyScalar(_tempVec2_2, _tempVec2_2, radius * this.scale);
 
         cc.Vec2.add(_tempVec2_3, _tempVec2, _tempVec2_2);

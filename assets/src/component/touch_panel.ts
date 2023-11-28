@@ -116,5 +116,26 @@ export default class TouchPanel extends cc.Component {
         this.moveSelf = info.moveSelf;
         this.node.setPosition(info.position.x, info.position.y);
     }
+
+    getCrossPoint (out, pointA, pointB, pointC, pointD) {
+        let AB = new cc.Vec2;
+        let CD = new cc.Vec2;
+
+        cc.Vec2.subtract(AB, pointB, pointA);
+        cc.Vec2.subtract(CD, pointD, pointC);
+
+        let CA = new cc.Vec2()
+        cc.Vec2.subtract(CA, pointA, pointC);
+
+
+        let t = this.cross(CD, CA) / this.cross(AB, CD);
+
+        cc.Vec2.scaleAndAdd(out, pointA, AB, t);
+        return out;
+    }
+
+    cross (a: cc.Vec2, b: cc.Vec2) {
+        return a.x * b.y - a.y * b.x;
+    }
     // update (dt) {}
 }
