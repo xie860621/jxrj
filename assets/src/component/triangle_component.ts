@@ -11,6 +11,8 @@ let Green = new cc.Color;
 cc.Color.fromHEX(Green, "9fff9e");
 let BLUE = new cc.Color
 cc.Color.fromHEX(BLUE, "23519a")
+let RED = new cc.Color
+cc.Color.fromHEX(RED, "#FF000096")
 
 @ccclass
 export default class TriangleComponent extends TouchPanel {
@@ -21,6 +23,11 @@ export default class TriangleComponent extends TouchPanel {
     showAngle: boolean = true;
     @property(Boolean)
     showLength: boolean = true;
+
+    @property(Boolean)
+    fillTriangle: boolean = false;
+    @property(cc.Color)
+    fillTriangleColor = RED.clone();
 
     @property(cc.Color)
     fillAngleColor = Green.clone();
@@ -218,7 +225,7 @@ export default class TriangleComponent extends TouchPanel {
             });
         }
 
-        drawHelper.drawVertexs(this._vertexs, this.isDotted, true, this.strokeColor);
+        drawHelper.drawVertexs(this._vertexs, this.isDotted, true, this.strokeColor, this.fillTriangle ? this.fillTriangleColor : null);
     }
 
     updateAngle () {

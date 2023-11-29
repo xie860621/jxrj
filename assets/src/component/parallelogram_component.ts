@@ -19,11 +19,29 @@ let _tempVec2: cc.Vec2 = new cc.Vec2;
 export default class Parallelogram extends TouchPanel {
     // ABCD 逆时针
 
+    @property(Boolean)
+    isFill: boolean = true;
+
     @property(cc.Color)
     fillColor: cc.Color = cc.Color.RED;
 
     ABLen: number = 10;
     _basePosition: cc.Vec3[] = [];
+
+
+    get A () {
+        return this.nodes[0];
+    }
+    get B () {
+        return this.nodes[1];
+    }
+    get C () {
+        return this.nodes[3];
+    }
+    get D () {
+        return this.nodes[2];
+    }
+
     onLoad () {
         this.ABLen = cc.Vec2.distance(this.nodes[0].position, this.nodes[1].position) / GlobalValue.scale;
 
@@ -68,7 +86,9 @@ export default class Parallelogram extends TouchPanel {
         this.nodes.forEach((node) => {
             vertexs.push(node.convertToWorldSpaceAR(cc.Vec2.ZERO));
         });
-        drawHelper.fillVertexs(vertexs, this.fillColor);
+        if (this.isFill) {
+            drawHelper.fillVertexs(vertexs, this.fillColor);
+        }
         drawHelper.drawVertexs(vertexs);
     }
 
