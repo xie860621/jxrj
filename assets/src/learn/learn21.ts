@@ -34,6 +34,9 @@ export default class Learn21 extends LearnBase {
     @property(cc.Node)
     rotationNode: cc.Node;
 
+    @property(cc.Node)
+    lens: cc.Node[] = [];
+
     a: number = 320;
     b: number = 160;
 
@@ -89,6 +92,12 @@ export default class Learn21 extends LearnBase {
         _tempVec3.y = this.rect1.C.position.y - this.b + 160;
         this.rect5.C.position = _tempVec3;
 
+
+        this.lens[0].setContentSize(0, this.b);
+        this.lens[1].setContentSize(this.b, 0);
+        this.lens[2].setContentSize(0, 320 - this.b);
+        this.lens[3].setContentSize(0, this.b);
+        this.lens[4].setContentSize(0, this.b);
 
         this.onSlider();
     }
