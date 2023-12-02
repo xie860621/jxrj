@@ -58,8 +58,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        0,
-        0,
+        1024,
+        576,
         0,
         0,
         0,
@@ -233,8 +233,8 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "平行四边形",
-    "_N$string": "平行四边形",
+    "_string": "三角形翻转",
+    "_N$string": "三角形翻转",
     "_fontSize": 24,
     "_lineHeight": 30,
     "_enableWrapText": true,
@@ -459,7 +459,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        -200,
+        -300,
         100,
         0,
         0,
@@ -560,7 +560,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "点",
+    "_name": "动点",
     "_objFlags": 0,
     "_parent": {
       "__id__": 11
@@ -585,8 +585,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 15,
-      "height": 15
+      "width": 25,
+      "height": 25
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -638,7 +638,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "b7e0ee9b-1b2d-4559-bf23-5b6299da2e94"
+      "__uuid__": "845c0dd2-4020-49ae-9183-4b69ab41ba2d"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -662,7 +662,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "6cGRDe6A1EWLmdN14g4IyQ",
+    "fileId": "ecY2PdEg5Noa2IYq8zC3EX",
     "sync": false
   },
   {
@@ -979,7 +979,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "点",
+    "_name": "动点",
     "_objFlags": 0,
     "_parent": {
       "__id__": 23
@@ -1004,8 +1004,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 15,
-      "height": 15
+      "width": 25,
+      "height": 25
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1057,7 +1057,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "b7e0ee9b-1b2d-4559-bf23-5b6299da2e94"
+      "__uuid__": "845c0dd2-4020-49ae-9183-4b69ab41ba2d"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -1081,7 +1081,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "09DCVg1dFLr5o1pPmJw9B/",
+    "fileId": "2aBbELnr5I8J6Ot+IeZYL0",
     "sync": false
   },
   {
@@ -1398,7 +1398,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "点",
+    "_name": "动点",
     "_objFlags": 0,
     "_parent": {
       "__id__": 35
@@ -1423,8 +1423,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 15,
-      "height": 15
+      "width": 25,
+      "height": 25
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1476,7 +1476,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "b7e0ee9b-1b2d-4559-bf23-5b6299da2e94"
+      "__uuid__": "845c0dd2-4020-49ae-9183-4b69ab41ba2d"
     },
     "_type": 0,
     "_sizeMode": 1,
@@ -1500,7 +1500,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "e3elHin59IpbQvGHAXm3n8",
+    "fileId": "0b5x6IBlhMMZECeyq4gGCj",
     "sync": false
   },
   {
@@ -2165,7 +2165,7 @@
         "__id__": 35
       }
     ],
-    "enableTouch": false,
+    "enableTouch": true,
     "moveSelf": false,
     "showAngle": false,
     "showLength": false,
@@ -2261,7 +2261,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        200,
+        300,
         100,
         0,
         0,
@@ -4046,7 +4046,7 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        200,
+        300,
         0,
         0,
         0,
@@ -4131,6 +4131,15 @@
     "nodes": [
       {
         "__id__": 110
+      },
+      {
+        "__id__": 11
+      },
+      {
+        "__id__": 23
+      },
+      {
+        "__id__": 35
       }
     ],
     "enableTouch": true,

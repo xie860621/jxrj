@@ -24,35 +24,42 @@ export default class Learn22 extends LearnBase {
     }
 
     updateTriangle (position) {
+        let width = 300;
         position = this.pointP.parent.convertToNodeSpaceAR(position);
         position.y = 0;
-        position.x = cc.misc.clampf(position.x, -200, 200);
+        position.x = cc.misc.clampf(position.x, -width, width);
 
         this.pointP.position = position;
 
-        let skew = (this.pointP.position.x) / 200;
+        let skew = (this.pointP.position.x) / width;
         skew = cc.misc.clampf(skew, -1, 1);
 
         _tempVec3 = this.triangle.A.position;
-        _tempVec3.x = (skew - 1) * 200; // 400
+        _tempVec3.x = (skew - 1) * width - skew * _tempVec3.x; // 400
         this.triangle1.A.position = _tempVec3;
 
-
         _tempVec3 = this.triangle.C.position;
-        _tempVec3.x = (skew - 1) * 200 - skew * _tempVec3.x
+        _tempVec3.x = (skew - 1) * width - skew * _tempVec3.x
         this.triangle1.C.position = _tempVec3;
 
         _tempVec3 = this.triangle.B.position;
-        _tempVec3.x = (skew - 1) * 200 - skew * _tempVec3.x
+        _tempVec3.x = (skew - 1) * width - skew * _tempVec3.x
         this.triangle1.B.position = _tempVec3;
     }
 
     onTouchMove (event: cc.Event.EventTouch): void {
-        if (event.target != this.pointP) {
-            return;
+        if (event.target == this.pointP) {
+            this.updateTriangle(event.getLocation());
+
+        } else {
+            this.updateTriangle(this.getNodeWorldPosition(this.pointP));
+            this.updateBase();
         }
-        this.updateTriangle(event.getLocation());
-        this.sendUpdateDraw();
+        this.sendUpdateDraw()
+    }
+
+    updateBase () {
+
     }
 
 }

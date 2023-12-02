@@ -69,6 +69,9 @@ export default class Learn21 extends LearnBase {
         this.rect2.C.position = this.rect1.C.position;
         this.rect2.D.position = this.rect1.D.position;
 
+        _tempVec3.x = this.pointE.position.x;
+        _tempVec3.y = this.rect1.D.position.y;
+        this.pointE.position = _tempVec3;
 
         _tempVec3.x = this.rect1.B.position.x - 160;
         _tempVec3.y = this.rect1.A.position.y - this.b + 160;
@@ -85,6 +88,7 @@ export default class Learn21 extends LearnBase {
         _tempVec3.x = this.rect5.A.position.x;
         _tempVec3.y = this.rect1.C.position.y - this.b + 160;
         this.rect5.C.position = _tempVec3;
+
 
         this.onSlider();
     }
